@@ -1835,7 +1835,8 @@
       document.getElementById(viewId).classList.add('active');
 
       const statusBarTime = document.getElementById('status-bar-time');
-      if (viewId === 'lock-view' || viewId === 'passcode-view') {
+      // 잠금화면, 암호 입력화면, 그리고 페이스톡 동영상 화면일 때는 상단 시간 숨기기
+      if (viewId === 'lock-view' || viewId === 'passcode-view' || viewId === 'facetalk-view') {
         statusBarTime.style.visibility = 'hidden';
       } else {
         statusBarTime.style.visibility = 'visible';
