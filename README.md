@@ -1571,7 +1571,7 @@
         </div>
       </div>
 
-      <!-- 📹 목업 내부 페이스톡 동영상 재생 화면 -->
+      <!-- 📹 목업 내부 페이스톡 동영상 재생 화면 (트위터 인앱 브라우저 대응) -->
       <div id="facetalk-view" class="view">
         <div class="facetalk-overlay-header">
           <span class="facetalk-back-btn" onclick="closeFaceTalkVideo()">‹</span>
@@ -1579,9 +1579,8 @@
           <span style="width:36px;"></span>
         </div>
         <div class="facetalk-video-container">
-          <video id="facetalkVideoPlayer" class="facetalk-video" autoplay loop playsinline controls>
-            <source id="facetalkVideoSource" src="" type="video/mp4">
-            동영상을 지원하지 않는 브라우저입니다.
+          <video id="facetalkVideoPlayer" class="facetalk-video" autoplay loop playsinline webkit-playsinline muted controls preload="auto">
+            <source id="facetalkVideoSource" src="https://ik.imagekit.io/ewslo2qz1/Untitled.mp4/ik-video.mp4?updatedAt=1792428006372" type="video/mp4">
           </video>
         </div>
       </div>
@@ -1733,7 +1732,7 @@
 
   <script>
     /* =========================================================
-     * 📹 동영상 링크(.mp4 등)를 바꾸고 싶다면 아래 따옴표 안의 주소만 수정하세요!
+     * 📹 동영상 링크(.mp4 등) 주소
      * ========================================================= */
     const myFaceTalkVideoUrl = 'https://ik.imagekit.io/ewslo2qz1/Untitled.mp4/ik-video.mp4?updatedAt=1792428006372';
 
@@ -1741,18 +1740,40 @@
       const videoPlayer = document.getElementById('facetalkVideoPlayer');
       const videoSource = document.getElementById('facetalkVideoSource');
       
+      openApp('facetalk-view');
+
       if (videoSource.src !== myFaceTalkVideoUrl) {
         videoSource.src = myFaceTalkVideoUrl;
         videoPlayer.load();
       }
       
-      openApp('facetalk-view');
-      videoPlayer.play().catch(e => console.log('자동 재생 시작:', e));
+      // 트위터 인앱 브라우저 정책 대응 (음소거 상태로 먼저 재생 후 소리 켜기)
+      videoPlayer.muted = true;
+      const playPromise = videoPlayer.play();
+      
+      if (playPromise !== undefined) {
+        playPromise.then(() => {
+          setTimeout(() => { videoPlayer.muted = false; }, 300);
+        }).catch(error => {
+          console.log('자동 재생 제한 발생, 터치 대기:', error);
+          const playOnTouch = () => {
+            videoPlayer.muted = false;
+            videoPlayer.play();
+            document.removeEventListener('click', playOnTouch);
+            document.removeEventListener('touchstart', playOnTouch);
+          };
+          document.addEventListener('click', playOnTouch, { once: true });
+          document.addEventListener('touchstart', playOnTouch, { once: true });
+        });
+      }
     }
 
     function closeFaceTalkVideo() {
       const videoPlayer = document.getElementById('facetalkVideoPlayer');
-      videoPlayer.pause();
+      if (videoPlayer) {
+        videoPlayer.pause();
+        videoPlayer.currentTime = 0;
+      }
       openApp('kakao-chat-room');
     }
 
