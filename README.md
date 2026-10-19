@@ -23,7 +23,7 @@
       overflow: hidden;
     }
 
-    /* iPhone Frame */
+    /* iPhone Frame (모바일 자동 반응형 스케일 적용) */
     .phone-mockup {
       width: 380px;
       height: 780px;
@@ -34,6 +34,19 @@
       overflow: hidden;
       display: flex;
       flex-direction: column;
+      transform-origin: center center;
+    }
+
+    /* 스마트폰 화면 크기(너비 400px 이하)에서 비율에 맞춰 자동 축소 */
+    @media screen and (max-width: 400px) {
+      .phone-mockup {
+        transform: scale(0.85);
+      }
+    }
+    @media screen and (max-width: 340px) {
+      .phone-mockup {
+        transform: scale(0.72);
+      }
     }
 
     /* Dynamic Island */
@@ -1663,28 +1676,19 @@
   </div>
 
   <script>
-    /* =========================================================
-     * 📸 사진 보관함 5열 x 3장 (총 15장) 이미지 URL 배열
-     * 원하시는 사진 주소(URL)로 아래 따옴표 안의 내용을 변경하시면 됩니다!
-     * ========================================================= */
     const myPhotoList = [
-      // 1열 (1~3번)
       'https://i.postimg.cc/bN8W3JwD/IMG-2338.jpg',
       'https://i.postimg.cc/gc31VRmR/IMG-2489.jpg',
       'https://i.postimg.cc/3N6hDQ2b/IMG-3432.jpg',
-      // 2열 (4~6번)
       'https://i.postimg.cc/2y3m6SLK/IMG-3430.jpg',
       'https://i.postimg.cc/fbjMqFhx/IMG-4083.jpg',
       'https://i.postimg.cc/Vv516k0X/IMG-3452.jpg',
-      // 3열 (7~9번)
       'https://i.postimg.cc/nrMZzh93/IMG-3443.jpg',
       'https://i.postimg.cc/dVCsr3HS/IMG-4647.jpg',
       'https://i.postimg.cc/PxXTg4XG/IMG-3507.jpg',
-      // 4열 (10~12번)
       'https://i.postimg.cc/7LMqtcyn/IMG-3826.jpg',
       'https://i.postimg.cc/Qt8h2b8s/IMG-3508.jpg',
       'https://i.postimg.cc/6q84CwGt/IMG-3495.jpg',
-      // 5열 (13~15번)
       'https://i.postimg.cc/MHnf1xj6/IMG-3496.jpg',
       'https://i.postimg.cc/SRnYcqzK/IMG-3497.jpg',
       'https://i.postimg.cc/VvJ0X1b6/IMG-3498.jpg'
@@ -1701,7 +1705,6 @@
       });
     }
 
-    // 페이지 로드시 사진 그리드 생성
     renderPhotos();
 
     let enteredPasscode = "";
@@ -1871,7 +1874,7 @@
       myWrapper.appendChild(myTime);
       chatContainer.appendChild(myWrapper);
 
-      input.value = '';
+      input.value = ``;
       chatContainer.scrollTop = chatContainer.scrollHeight;
     }
   </script>
