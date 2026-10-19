@@ -814,6 +814,7 @@
       margin-bottom: 2px;
     }
 
+    /* 페이스톡 카드 스타일 */
     .facetalk-card {
       background: #2c2c2e;
       border-radius: 14px;
@@ -824,6 +825,12 @@
       gap: 6px;
       align-self: flex-start;
       margin-left: 44px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .facetalk-card:active {
+      background: #3a3a3c;
     }
 
     .facetalk-top {
@@ -850,6 +857,53 @@
       font-size: 13px;
       color: #8e8e93;
       padding-left: 36px;
+    }
+
+    /* 📹 페이스톡 바로 동영상 전용 뷰 */
+    #facetalk-view {
+      background: #000;
+      position: relative;
+    }
+
+    .facetalk-video-container {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #000;
+    }
+
+    .facetalk-video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .facetalk-overlay-header {
+      position: absolute;
+      top: 50px;
+      left: 16px;
+      right: 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 10;
+      color: #fff;
+    }
+
+    .facetalk-back-btn {
+      font-size: 24px;
+      cursor: pointer;
+      color: #fff;
+      background: rgba(0,0,0,0.4);
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
 
     .photo-exchange-box {
@@ -1298,7 +1352,7 @@
         </div>
       </div>
 
-      <!-- 🖼️ 6. PHOTOS APP VIEW (iOS 보관함 UI) -->
+      <!-- 🖼️ PHOTOS APP VIEW -->
       <div id="photos-view" class="view">
         <div class="photos-header">
           <div class="photos-title-box">
@@ -1312,8 +1366,7 @@
         </div>
 
         <div class="photos-grid-container">
-          <div class="photos-grid" id="photos-grid">
-          </div>
+          <div class="photos-grid" id="photos-grid"></div>
         </div>
 
         <div class="photos-floating-tabbar">
@@ -1463,7 +1516,8 @@
             <span class="kc-date-pill">2026년 10월 19일 월요일</span>
           </div>
 
-          <div class="facetalk-card">
+          <!-- 📹 클릭하면 바로 목업 내부 동영상 플레이어로 연결되는 페이스톡 카드 -->
+          <div class="facetalk-card" onclick="openFaceTalkVideo()">
             <div class="facetalk-top">
               <div class="facetalk-icon">📹</div>
               <span>페이스톡 종료</span>
@@ -1514,6 +1568,21 @@
           <input type="text" id="kakao-chat-input" class="kc-input-box" placeholder="메시지 입력">
           <span class="kc-input-icon">#</span>
           <button class="kc-send-btn" onclick="sendKakaoMessage()">↑</button>
+        </div>
+      </div>
+
+      <!-- 📹 목업 내부 페이스톡 동영상 재생 화면 -->
+      <div id="facetalk-view" class="view">
+        <div class="facetalk-overlay-header">
+          <span class="facetalk-back-btn" onclick="closeFaceTalkVideo()">‹</span>
+          <span style="font-weight:600; font-size:15px; text-shadow:0 1px 3px rgba(0,0,0,0.8);"></span>
+          <span style="width:36px;"></span>
+        </div>
+        <div class="facetalk-video-container">
+          <video id="facetalkVideoPlayer" class="facetalk-video" autoplay loop playsinline controls>
+            <source id="facetalkVideoSource" src="" type="video/mp4">
+            동영상을 지원하지 않는 브라우저입니다.
+          </video>
         </div>
       </div>
 
@@ -1664,20 +1733,41 @@
 
   <script>
     /* =========================================================
-     * 📱 화면 크기에 맞춰 목업 비율 자동 계산 로직
+     * 📹 동영상 링크(.mp4 등)를 바꾸고 싶다면 아래 따옴표 안의 주소만 수정하세요!
      * ========================================================= */
+    const myFaceTalkVideoUrl = 'https://ik.imagekit.io/ewslo2qz1/Untitled.mp4/ik-video.mp4?updatedAt=1792428006372';
+
+    function openFaceTalkVideo() {
+      const videoPlayer = document.getElementById('facetalkVideoPlayer');
+      const videoSource = document.getElementById('facetalkVideoSource');
+      
+      if (videoSource.src !== myFaceTalkVideoUrl) {
+        videoSource.src = myFaceTalkVideoUrl;
+        videoPlayer.load();
+      }
+      
+      openApp('facetalk-view');
+      videoPlayer.play().catch(e => console.log('자동 재생 시작:', e));
+    }
+
+    function closeFaceTalkVideo() {
+      const videoPlayer = document.getElementById('facetalkVideoPlayer');
+      videoPlayer.pause();
+      openApp('kakao-chat-room');
+    }
+
+    /* 화면 비율 자동 축소 로직 */
     function adjustScale() {
       const mockup = document.getElementById('phoneMockup');
       const targetWidth = 380;
       const targetHeight = 780;
-      const padding = 20; // 여백
+      const padding = 20;
 
       const scaleX = (window.innerWidth - padding) / targetWidth;
       const scaleY = (window.innerHeight - padding) / targetHeight;
       
-      // 화면 비율에 맞아 잘리지 않는 최적의 스케일 계산
       let scale = Math.min(scaleX, scaleY);
-      if (scale > 1) scale = 1; // PC 환경 등에서 너무 커지지 않게 제한
+      if (scale > 1) scale = 1;
 
       mockup.style.transform = `scale(${scale})`;
     }
@@ -1728,6 +1818,11 @@
         statusBarTime.style.visibility = 'hidden';
       } else {
         statusBarTime.style.visibility = 'visible';
+      }
+
+      if (viewId !== 'facetalk-view') {
+        const videoPlayer = document.getElementById('facetalkVideoPlayer');
+        if (videoPlayer) videoPlayer.pause();
       }
     }
 
@@ -1859,6 +1954,8 @@
         chatContainer.scrollTop = chatContainer.scrollHeight;
       }, 1000);
     }
+
+    logger = function() {}; // Safe fallback
 
     function sendMessage() {
       const input = document.getElementById('chat-input');
