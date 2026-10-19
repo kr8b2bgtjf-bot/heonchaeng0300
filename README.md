@@ -17,13 +17,14 @@
     body {
       background-color: #0f0f11;
       height: 100vh;
+      width: 100vw;
       display: flex;
       justify-content: center;
       align-items: center;
       overflow: hidden;
     }
 
-    /* iPhone Frame (모바일 자동 반응형 스케일 적용) */
+    /* iPhone Frame (모바일 기기 크기에 맞춰 동적 자동 축소) */
     .phone-mockup {
       width: 380px;
       height: 780px;
@@ -34,19 +35,8 @@
       overflow: hidden;
       display: flex;
       flex-direction: column;
+      flex-shrink: 0;
       transform-origin: center center;
-    }
-
-    /* 스마트폰 화면 크기(너비 400px 이하)에서 비율에 맞춰 자동 축소 */
-    @media screen and (max-width: 400px) {
-      .phone-mockup {
-        transform: scale(0.85);
-      }
-    }
-    @media screen and (max-width: 340px) {
-      .phone-mockup {
-        transform: scale(0.72);
-      }
     }
 
     /* Dynamic Island */
@@ -1205,7 +1195,7 @@
 </head>
 <body>
 
-  <div class="phone-mockup">
+  <div class="phone-mockup" id="phoneMockup">
     <!-- Dynamic Island -->
     <div class="dynamic-island"></div>
 
@@ -1321,14 +1311,11 @@
           </div>
         </div>
 
-        <!-- 3열 x 5행 그리드 영역 -->
         <div class="photos-grid-container">
           <div class="photos-grid" id="photos-grid">
-            <!-- JS로 15개의 사진이 동적으로 세팅됩니다 -->
           </div>
         </div>
 
-        <!-- iOS 스타일 플로팅 하단 탭바 -->
         <div class="photos-floating-tabbar">
           <div class="photos-tab-group">
             <div class="photos-tab-item active">
@@ -1676,6 +1663,28 @@
   </div>
 
   <script>
+    /* =========================================================
+     * 📱 화면 크기에 맞춰 목업 비율 자동 계산 로직
+     * ========================================================= */
+    function adjustScale() {
+      const mockup = document.getElementById('phoneMockup');
+      const targetWidth = 380;
+      const targetHeight = 780;
+      const padding = 20; // 여백
+
+      const scaleX = (window.innerWidth - padding) / targetWidth;
+      const scaleY = (window.innerHeight - padding) / targetHeight;
+      
+      // 화면 비율에 맞아 잘리지 않는 최적의 스케일 계산
+      let scale = Math.min(scaleX, scaleY);
+      if (scale > 1) scale = 1; // PC 환경 등에서 너무 커지지 않게 제한
+
+      mockup.style.transform = `scale(${scale})`;
+    }
+
+    window.addEventListener('resize', adjustScale);
+    window.addEventListener('load', adjustScale);
+
     const myPhotoList = [
       'https://i.postimg.cc/bN8W3JwD/IMG-2338.jpg',
       'https://i.postimg.cc/gc31VRmR/IMG-2489.jpg',
@@ -1874,7 +1883,7 @@
       myWrapper.appendChild(myTime);
       chatContainer.appendChild(myWrapper);
 
-      input.value = ``;
+      input.value = '';
       chatContainer.scrollTop = chatContainer.scrollHeight;
     }
   </script>
