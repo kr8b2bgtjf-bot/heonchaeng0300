@@ -697,3 +697,18 @@
   </script>
 </body>
 </html>
+<style>
+  /* 중간 생략... */
+
+  /* Home Screen View */
+  #home-view {
+    background-image: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.2)), url('https://images.unsplash.com/photo-1514565131-fce0801e5785?auto=format&fit=crop&w=800&q=80');
+    background-size: cover;
+    background-position: center;
+    padding-top: 60px;
+    padding-bottom: 20px;
+    justify-content: space-between;
+  }
+
+  /* 이하 생략... */
+</style>
