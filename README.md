@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -24,7 +25,7 @@
       overflow: hidden;
     }
 
-    /* iPhone Frame (모바일 기기 크기에 맞춰 동적 자동 축소) */
+    /* iPhone Frame */
     .phone-mockup {
       width: 380px;
       height: 780px;
@@ -55,7 +56,7 @@
     /* Status Bar */
     .status-bar {
       height: 48px;
-      padding: 14px 24px 0 34px; /* 왼쪽 여백을 늘려 시간을 오른쪽으로 이동 */
+      padding: 14px 24px 0 34px;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -104,7 +105,7 @@
       display: flex;
     }
 
-    /* 🔒 잠금화면 (Lock Screen) 스타일 */
+    /* 🔒 잠금화면 */
     #lock-view {
       background-image: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.2)), url('https://i.postimg.cc/0yGfSkpM/IMG-7286.webp');
       padding-top: 90px;
@@ -138,7 +139,7 @@
       text-shadow: 0 2px 8px rgba(0,0,0,0.8);
     }
 
-    /* 🔑 암호 입력 화면 (Passcode Screen) 스타일 */
+    /* 🔑 암호 입력 화면 */
     #passcode-view {
       background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.5)), url('https://i.postimg.cc/0yGfSkpM/IMG-7286.webp');
       padding-top: 80px;
@@ -332,7 +333,182 @@
       transform: translateX(-50%);
     }
 
-    /* 🖼️ 사진(Photos) 앱 UI 스타일 */
+    /* 💌 메시지 목록 화면 스타일 */
+    #messages-view {
+      background: #000;
+      color: #fff;
+    }
+
+    .msg-list-header {
+      padding: 52px 16px 10px 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #000;
+      position: relative;
+    }
+
+    .msg-edit-btn {
+      background: #1c1c1e;
+      color: #fff;
+      font-size: 14px;
+      font-weight: 500;
+      padding: 6px 14px;
+      border-radius: 16px;
+      cursor: pointer;
+      z-index: 2;
+    }
+
+    .msg-main-title {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 18px;
+      font-weight: 700;
+    }
+
+    .msg-menu-btn {
+      width: 32px;
+      height: 32px;
+      background: #1c1c1e;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 14px;
+      color: #fff;
+      cursor: pointer;
+      z-index: 2;
+    }
+
+    .msg-conversation-list {
+      flex: 1;
+      overflow-y: auto;
+      padding-bottom: 70px;
+    }
+
+    .msg-conv-item {
+      display: flex;
+      align-items: center;
+      padding: 10px 16px;
+      gap: 12px;
+      cursor: pointer;
+      position: relative;
+    }
+
+    .msg-conv-item:active {
+      background: #1c1c1e;
+    }
+
+    .msg-unread-dot {
+      width: 8px;
+      height: 8px;
+      background: #0a84ff;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .msg-conv-avatar {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: #2c2c2e;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #fff;
+      flex-shrink: 0;
+    }
+
+    .msg-conv-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .msg-conv-info {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .msg-conv-top-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2px;
+    }
+
+    .msg-conv-sender {
+      font-size: 15px;
+      font-weight: 600;
+      color: #fff;
+    }
+
+    .msg-conv-time {
+      font-size: 13px;
+      color: #8e8e93;
+    }
+
+    .msg-conv-preview {
+      font-size: 13px;
+      color: #8e8e93;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .msg-conv-chevron {
+      color: #8e8e93;
+      font-size: 14px;
+      margin-left: 4px;
+    }
+
+    .msg-bottom-search-bar {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      background: rgba(20, 20, 22, 0.95);
+      backdrop-filter: blur(20px);
+      padding: 10px 16px 28px 16px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      border-top: 0.5px solid rgba(255,255,255,0.1);
+      z-index: 10;
+    }
+
+    .msg-search-input-box {
+      flex: 1;
+      background: #1c1c1e;
+      border-radius: 20px;
+      padding: 8px 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: #8e8e93;
+      font-size: 14px;
+    }
+
+    .msg-search-input-box input {
+      background: transparent;
+      border: none;
+      color: #fff;
+      outline: none;
+      width: 100%;
+      font-size: 14px;
+    }
+
+    .msg-compose-btn {
+      font-size: 20px;
+      color: #0a84ff;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* 🖼️ 사진 앱 스타일 */
     #photos-view {
       background: #000;
       color: #fff;
@@ -400,7 +576,6 @@
       padding: 10px 12px 100px 12px;
     }
 
-    /* 3열 (3 columns) 그리드 구조 */
     .photos-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -422,7 +597,6 @@
       object-fit: cover;
     }
 
-    /* iOS 스타일 하단 플로팅 탭바 */
     .photos-floating-tabbar {
       position: absolute;
       bottom: 22px;
@@ -492,7 +666,7 @@
       border: 0.5px solid rgba(255, 255, 255, 0.1);
     }
 
-    /* 💬 카카오톡 앱 UI 스타일 */
+    /* 💬 카카오톡 스타일 */
     #kakao-talk-view {
       background: #000000;
       color: #ffffff;
@@ -595,6 +769,7 @@
       overflow: hidden;
       background: #333;
       flex-shrink: 0;
+      cursor: pointer;
     }
 
     .k-profile-img img {
@@ -657,7 +832,8 @@
       background: #121212;
       border-top: 0.5px solid #222;
       display: flex;
-      justify-content: space-around;
+      justify-content: space-between;
+      padding: 0 24px;
       align-items: center;
       z-index: 999;
     }
@@ -746,6 +922,7 @@
       text-align: center;
       margin: 12px 0;
     }
+
     .kc-date-pill {
       background: rgba(0,0,0,0.3);
       color: #aaa;
@@ -777,6 +954,7 @@
       overflow: hidden;
       background: #333;
       flex-shrink: 0;
+      cursor: pointer;
     }
 
     .kc-avatar img {
@@ -814,7 +992,6 @@
       margin-bottom: 2px;
     }
 
-    /* 페이스톡 카드 스타일 */
     .facetalk-card {
       background: #2c2c2e;
       border-radius: 14px;
@@ -859,7 +1036,6 @@
       padding-left: 36px;
     }
 
-    /* 📹 페이스톡 바로 동영상 전용 뷰 */
     #facetalk-view {
       background: #000;
       position: relative;
@@ -1067,12 +1243,12 @@
       margin-top: 2px;
     }
 
-    /* Messages View */
-    #messages-view {
+    /* iMessage Chat Room View */
+    #messages-chat-view {
       background: #000;
     }
 
-    #messages-view .app-header {
+    #messages-chat-view .app-header {
       padding-top: 75px;
       padding-bottom: 18px;
     }
@@ -1115,6 +1291,15 @@
       flex-direction: column;
       gap: 10px;
       background: #000;
+    }
+
+    /* iMessage 날짜 구분선 스타일 */
+    .msg-date-divider {
+      text-align: center;
+      margin: 14px 0 6px 0;
+      font-size: 11px;
+      font-weight: 500;
+      color: #8e8e93;
     }
 
     .msg-wrapper {
@@ -1248,6 +1433,9 @@
   </style>
 </head>
 <body>
+
+  <!-- 공통 이미지 업로드용 파일 input -->
+  <input type="file" id="imageUploadInput" accept="image/*" style="display: none;" onchange="handleImageUpload(event)">
 
   <div class="phone-mockup" id="phoneMockup">
     <!-- Dynamic Island -->
@@ -1413,11 +1601,11 @@
         </div>
 
         <div class="k-chat-list">
-          <div class="k-chat-item" onclick="openKakaoChatRoom()">
-            <div class="k-profile-img">
+          <div class="k-chat-item">
+            <div class="k-profile-img" onclick="triggerImageUpload(event, this)">
               <img src="https://i.postimg.cc/nzGhJnhQ/IMG-1498.jpg" alt="지헌이">
             </div>
-            <div class="k-chat-info">
+            <div class="k-chat-info" onclick="openKakaoChatRoom()">
               <div class="k-chat-name-row">
                 <span class="k-chat-name">지헌이❤️</span>
                 <span class="k-chat-time">22:06</span>
@@ -1427,7 +1615,7 @@
           </div>
 
           <div class="k-chat-item">
-            <div class="k-profile-img">
+            <div class="k-profile-img" onclick="triggerImageUpload(event, this)">
               <img src="https://i.postimg.cc/VvdYxnr5/C0324339-DF8F-4075-AB47-0DFE93BB57D9.jpg" alt="김현석 파트장님">
             </div>
             <div class="k-chat-info">
@@ -1440,7 +1628,7 @@
           </div>
 
           <div class="k-chat-item">
-            <div class="k-profile-img">
+            <div class="k-profile-img" onclick="triggerImageUpload(event, this)">
               <img src="https://i.postimg.cc/sfmsVVp5/IMG-0354.jpg" alt="유지애 위원님">
             </div>
             <div class="k-chat-info">
@@ -1453,7 +1641,7 @@
           </div>
 
           <div class="k-chat-item">
-            <div class="k-profile-img">
+            <div class="k-profile-img" onclick="triggerImageUpload(event, this)">
               <img src="https://i.postimg.cc/VvdYxnr5/C0324339-DF8F-4075-AB47-0DFE93BB57D9.jpg" alt="언니1">
             </div>
             <div class="k-chat-info">
@@ -1497,7 +1685,7 @@
 
         <div class="kc-messages" id="kakao-chat-container">
           <div class="kc-msg-row them">
-            <div class="kc-avatar">
+            <div class="kc-avatar" onclick="triggerImageUpload(event, this)">
               <img src="https://i.postimg.cc/nzGhJnhQ/IMG-1498.jpg" alt="지헌">
             </div>
             <div class="kc-bubble">톡 왜 안봐?</div>
@@ -1505,7 +1693,7 @@
           </div>
 
           <div class="kc-msg-row them">
-            <div class="kc-avatar">
+            <div class="kc-avatar" onclick="triggerImageUpload(event, this)">
               <img src="https://i.postimg.cc/nzGhJnhQ/IMG-1498.jpg" alt="지헌">
             </div>
             <div class="kc-bubble">걱정되게...</div>
@@ -1516,7 +1704,6 @@
             <span class="kc-date-pill">2026년 10월 19일 월요일</span>
           </div>
 
-          <!-- 📹 클릭하면 바로 목업 내부 동영상 플레이어로 연결되는 페이스톡 카드 -->
           <div class="facetalk-card" onclick="openFaceTalkVideo()">
             <div class="facetalk-top">
               <div class="facetalk-icon">📹</div>
@@ -1527,7 +1714,7 @@
           </div>
 
           <div class="kc-msg-row them">
-            <div class="kc-avatar">
+            <div class="kc-avatar" onclick="triggerImageUpload(event, this)">
               <img src="https://i.postimg.cc/nzGhJnhQ/IMG-1498.jpg" alt="지헌">
             </div>
             <div class="kc-bubble" style="line-height:1.5;">
@@ -1540,7 +1727,7 @@
           </div>
 
           <div class="kc-msg-row them">
-            <div class="kc-avatar">
+            <div class="kc-avatar" onclick="triggerImageUpload(event, this)">
               <img src="https://i.postimg.cc/nzGhJnhQ/IMG-1498.jpg" alt="지헌">
             </div>
             <div class="photo-exchange-box">
@@ -1555,7 +1742,7 @@
           </div>
 
           <div class="kc-msg-row them">
-            <div class="kc-avatar">
+            <div class="kc-avatar" onclick="triggerImageUpload(event, this)">
               <img src="https://i.postimg.cc/nzGhJnhQ/IMG-1498.jpg" alt="지헌">
             </div>
             <div class="kc-bubble">흥</div>
@@ -1571,7 +1758,7 @@
         </div>
       </div>
 
-      <!-- 📹 목업 내부 페이스톡 동영상 재생 화면 (트위터 인앱 브라우저 대응) -->
+      <!-- 📹 목업 내부 페이스톡 동영상 재생 화면 -->
       <div id="facetalk-view" class="view">
         <div class="facetalk-overlay-header">
           <span class="facetalk-back-btn" onclick="closeFaceTalkVideo()">‹</span>
@@ -1585,7 +1772,7 @@
         </div>
       </div>
 
-      <!-- 2. PHONE APP VIEW -->
+      <!-- 2. PHONE APP VIEW (통화 앱) -->
       <div id="phone-view" class="view">
         <div class="app-header">
           <span class="back-btn" onclick="goHome()">‹ 홈</span>
@@ -1663,10 +1850,133 @@
         </div>
       </div>
 
-      <!-- 3. MESSAGES VIEW -->
+      <!-- 💌 MESSAGES LIST VIEW (메시지 앱 목록 화면) -->
       <div id="messages-view" class="view">
+        <div class="msg-list-header">
+          <div class="msg-edit-btn">편집</div>
+          <div class="msg-main-title">메시지</div>
+          <div class="msg-menu-btn">≡</div>
+        </div>
+
+        <div class="msg-conversation-list">
+          <div class="msg-conv-item">
+            <div class="msg-conv-avatar">
+              <img src="https://i.postimg.cc/k5CkQqfD/IMG-7307.jpg" alt="지헌이❤️">
+            </div>
+            <div class="msg-conv-info" onclick="openMessagesChat()">
+              <div class="msg-conv-top-row">
+                <span class="msg-conv-sender" style="color:#fff;">지헌이❤️</span>
+                <span class="msg-conv-time">12:45</span>
+              </div>
+              <div class="msg-conv-preview">퇴근하고 바로가께🩵🩵</div>
+            </div>
+            <span class="msg-conv-chevron">></span>
+          </div>
+
+          <div class="msg-conv-item">
+            <div class="msg-unread-dot"></div>
+            <div class="msg-conv-avatar">
+              <img src="https://i.postimg.cc/k5CkQqfD/IMG-7307.jpg" alt="+82 1599-6405">
+            </div>
+            <div class="msg-conv-info">
+              <div class="msg-conv-top-row">
+                <span class="msg-conv-sender">+82 1644-4174</span>
+                <span class="msg-conv-time">어제</span>
+              </div>
+              <div class="msg-conv-preview">[Web발신] [인증번호: 000514] 카카오계정 로그...</div>
+            </div>
+            <span class="msg-conv-chevron">></span>
+          </div>
+
+          <div class="msg-conv-item">
+            <div class="msg-unread-dot"></div>
+            <div class="msg-conv-avatar">
+              <img src="https://i.postimg.cc/k5CkQqfD/IMG-7307.jpg" alt="+82 1588-1580">
+            </div>
+            <div class="msg-conv-info">
+              <div class="msg-conv-top-row">
+                <span class="msg-conv-sender">+82 1644-1107</span>
+                <span class="msg-conv-time">어제</span>
+              </div>
+              <div class="msg-conv-preview">[Web발신] (광고)컬리 12,000원 쿠폰 당첨!...</div>
+            </div>
+            <span class="msg-conv-chevron">></span>
+          </div>
+
+          <div class="msg-conv-item">
+            <div class="msg-unread-dot"></div>
+            <div class="msg-conv-avatar">
+              <img src="https://i.postimg.cc/k5CkQqfD/IMG-7307.jpg" alt="+82 2-525-2110">
+            </div>
+            <div class="msg-conv-info">
+              <div class="msg-conv-top-row">
+                <span class="msg-conv-sender">+82 1544-1900</span>
+                <span class="msg-conv-time">토요일</span>
+              </div>
+              <div class="msg-conv-preview">[Web발신] (광고)[교보문고]리커버에디션 예약판매!...</div>
+            </div>
+            <span class="msg-conv-chevron">></span>
+          </div>
+
+          <div class="msg-conv-item">
+            <div class="msg-unread-dot"></div>
+            <div class="msg-conv-avatar">
+              <img src="https://i.postimg.cc/k5CkQqfD/IMG-7307.jpg" alt="+82 1577-7011">
+            </div>
+            <div class="msg-conv-info">
+              <div class="msg-conv-top-row">
+                <span class="msg-conv-sender">+82 1577-7011</span>
+                <span class="msg-conv-time">토요일</span>
+              </div>
+              <div class="msg-conv-preview">[Web발신] (광고)쿠팡_쿠폰 당첨 축하합니다!...</div>
+            </div>
+            <span class="msg-conv-chevron">></span>
+          </div>
+
+          <div class="msg-conv-item">
+            <div class="msg-unread-dot"></div>
+            <div class="msg-conv-avatar">
+              <img src="https://i.postimg.cc/k5CkQqfD/IMG-7307.jpg" alt="114">
+            </div>
+            <div class="msg-conv-info">
+              <div class="msg-conv-top-row">
+                <span class="msg-conv-sender">+82 10-2000-...</span>
+                <span class="msg-conv-time">토요일</span>
+              </div>
+              <div class="msg-conv-preview">[한진택배] 네이버배송 상품 도착!</div>
+            </div>
+            <span class="msg-conv-chevron">></span>
+          </div>
+
+          <div class="msg-conv-item">
+            <div class="msg-conv-avatar">
+              <img src="https://i.postimg.cc/k5CkQqfD/IMG-7307.jpg" alt="+82 1600-0987">
+            </div>
+            <div class="msg-conv-info">
+              <div class="msg-conv-top-row">
+                <span class="msg-conv-sender">+82 1600-0987</span>
+                <span class="msg-conv-time">토요일</span>
+              </div>
+              <div class="msg-conv-preview">[Web발신] (광고)[배달의민족] 인기 브랜드...</div>
+            </div>
+            <span class="msg-conv-chevron">></span>
+          </div>
+        </div>
+
+        <div class="msg-bottom-search-bar">
+          <div class="msg-search-input-box">
+            <span></span>
+            <input type="text" placeholder="검색">
+            <span></span>
+          </div>
+          <span class="msg-compose-btn"></span>
+        </div>
+      </div>
+
+      <!-- 💬 MESSAGES CHAT ROOM VIEW (메시지 상세 대화방) -->
+      <div id="messages-chat-view" class="view">
         <div class="app-header">
-          <span class="back-btn" onclick="goHome()">‹ 뒤로</span>
+          <span class="back-btn" onclick="returnToMessagesList()">‹ 메시지</span>
           <div class="msg-header-profile">
             <div class="default-avatar">
               <img src="https://i.postimg.cc/k5CkQqfD/IMG-7307.jpg" alt="지헌이❤️">
@@ -1677,6 +1987,47 @@
         </div>
 
         <div class="chat-container" id="chat-container">
+          <!-- 10월 18일 일요일 대화 (과거 내역) -->
+          <div class="msg-date-divider">10월 18일 일요일</div>
+
+          <div class="msg-wrapper msg-them">
+            <div class="message-bubble">언니 오늘 모해ㅐ</div>
+            <div class="msg-time">11:12</div>
+          </div>
+
+          <div class="msg-wrapper msg-me">
+            <div class="message-bubble">오늘 약속이써ㅠ... 흑.. </div>
+            <div class="msg-time">11:14</div>
+          </div>
+
+          <div class="msg-wrapper msg-them">
+            <div class="message-bubble">아 그래? 웅 조심히 다녀와요💗💗</div>
+            <div class="msg-time">11:15</div>
+          </div>
+
+          <div class="msg-wrapper msg-me">
+            <div class="message-bubble">알게써요 ㅎㅎㅎ</div>
+            <div class="msg-time">11:18</div>
+          </div>
+
+          <div class="msg-wrapper msg-them">
+            <div class="message-bubble">아직 밖이야? 카톡 안 보길래..</div>
+            <div class="msg-time">23:40</div>
+          </div>
+
+          <div class="msg-wrapper msg-me">
+            <div class="message-bubble">헐 ㅠ 진동해놨었나봐... 먄ㅜㅜㅜ</div>
+            <div class="msg-time">23:49</div>
+          </div>
+
+          <div class="msg-wrapper msg-them">
+            <div class="message-bubble">... 페이스톡이나 받아....</div>
+            <div class="msg-time">23:52</div>
+          </div>
+
+          <!-- 10월 19일 월요일 대화 (가장 최근 기점) -->
+          <div class="msg-date-divider">10월 19일 월요일</div>
+
           <div class="msg-wrapper msg-them">
             <div class="message-bubble">오늘 몇 시에 만나?</div>
             <div class="msg-time">12:43</div>
@@ -1686,6 +2037,7 @@
             <div class="message-bubble">퇴근하고 바로가께🩵🩵</div>
             <div class="msg-time">12:45</div>
           </div>
+
         </div>
 
         <div class="chat-input-area">
@@ -1731,9 +2083,32 @@
   </div>
 
   <script>
-    /* =========================================================
-     * 📹 동영상 링크(.mp4 등) 주소
-     * ========================================================= */
+    let activeProfileElement = null;
+
+    function triggerImageUpload(event, element) {
+      event.stopPropagation();
+      activeProfileElement = element;
+      document.getElementById('imageUploadInput').click();
+    }
+
+    function handleImageUpload(event) {
+      const file = event.target.files[0];
+      if (file && activeProfileElement) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          const imageUrl = e.target.result;
+          let imgTag = activeProfileElement.querySelector('img');
+          if (imgTag) {
+            imgTag.src = imageUrl;
+          } else {
+            activeProfileElement.innerHTML = `<img src="${imageUrl}" alt="프로필">`;
+          }
+        };
+        reader.readAsDataURL(file);
+      }
+      event.target.value = '';
+    }
+
     const myFaceTalkVideoUrl = 'https://ik.imagekit.io/ewslo2qz1/Untitled.mp4/ik-video.mp4?updatedAt=1792428006372';
 
     function openFaceTalkVideo() {
@@ -1747,7 +2122,6 @@
         videoPlayer.load();
       }
       
-      // 트위터 인앱 브라우저 정책 대응 (음소거 상태로 먼저 재생 후 소리 켜기)
       videoPlayer.muted = true;
       const playPromise = videoPlayer.play();
       
@@ -1777,7 +2151,6 @@
       openApp('kakao-chat-room');
     }
 
-    /* 화면 비율 자동 축소 로직 */
     function adjustScale() {
       const mockup = document.getElementById('phoneMockup');
       const targetWidth = 380;
@@ -1835,7 +2208,6 @@
       document.getElementById(viewId).classList.add('active');
 
       const statusBarTime = document.getElementById('status-bar-time');
-      // 잠금화면, 암호 입력화면, 그리고 페이스톡 동영상 화면일 때는 상단 시간 숨기기
       if (viewId === 'lock-view' || viewId === 'passcode-view' || viewId === 'facetalk-view') {
         statusBarTime.style.visibility = 'hidden';
       } else {
@@ -1914,6 +2286,14 @@
       openApp('kakao-talk-view');
     }
 
+    function openMessagesChat() {
+      openApp('messages-chat-view');
+    }
+
+    function returnToMessagesList() {
+      openApp('messages-view');
+    }
+
     function sendKakaoMessage() {
       const input = document.getElementById('kakao-chat-input');
       const text = input.value.trim();
@@ -1977,8 +2357,6 @@
       }, 1000);
     }
 
-    logger = function() {}; // Safe fallback
-
     function sendMessage() {
       const input = document.getElementById('chat-input');
       const text = input.value.trim();
@@ -2004,7 +2382,54 @@
 
       input.value = '';
       chatContainer.scrollTop = chatContainer.scrollHeight;
+
+      setTimeout(() => {
+        let replyText = "힛";
+
+        if (text.includes('사랑해') || text.includes('사랑') || text.includes('사룽')) {
+          replyText = "나두 💗💗💗 히히";
+        } 
+        else if (text.includes('보고싶') || text.includes('보구싶') || text.includes('보고시퍼')) {
+          replyText = "맨날 데이트 하고싶어ㅓ....";
+        } 
+        else if (text.includes('뭐해') || text.includes('모해') || text.includes('머해')) {
+          replyText = "맞혀바라~~";
+        } 
+        else if (text.includes('들어갔') || text.includes('조심') || text.includes('들어갓')) {
+          replyText = "언니랑 더 있고 싶었는데..";
+        } 
+        else if (text.includes('미안') || text.includes('먄') || text.includes('미아')) {
+          replyText = "ㅡㅡ";
+        } 
+        else if (text.includes('헌') || text.includes('지헌')) {
+          replyText = "웅";
+        } 
+        else if (text.includes('ㅋㅋ') || text.includes('ㅎㅎ') || text.includes('ㅋㅋㅋ')) {
+          replyText = "ㅋㅋㅋㅋㅋ";
+        } 
+        else if (text.includes('잘자') || text.includes('꿈꿔') || text.includes('굿나잇')) {
+          replyText = "쪽❤️❤️";
+        }
+
+        const replyWrapper = document.createElement('div');
+        replyWrapper.className = 'msg-wrapper msg-them';
+
+        const replyBubble = document.createElement('div');
+        replyBubble.className = 'message-bubble';
+        replyBubble.innerText = replyText;
+
+        const replyTime = document.createElement('div');
+        replyTime.className = 'msg-time';
+        replyTime.innerText = "23:48";
+
+        replyWrapper.appendChild(replyBubble);
+        replyWrapper.appendChild(replyTime);
+        chatContainer.appendChild(replyWrapper);
+
+        chatContainer.scrollTop = chatContainer.scrollHeight;
+      }, 1000);
     }
   </script>
 </body>
 </html>
+
