@@ -55,7 +55,7 @@
     /* Status Bar */
     .status-bar {
       height: 48px;
-      padding: 14px 24px 0 24px;
+      padding: 14px 24px 0 34px; /* 왼쪽 여백을 늘려 시간을 오른쪽으로 이동 */
       display: flex;
       justify-content: space-between;
       align-items: center;
