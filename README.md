@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -1141,23 +1140,10 @@
       flex-shrink: 0;
     }
 
-    /* Phone App View (전화 앱 스타일) */
+    /* Phone App View */
     #phone-view {
       background: #000;
       color: #fff;
-    }
-
-    .phone-sub-view {
-      display: none;
-      flex: 1;
-      overflow-y: auto;
-      padding-bottom: 75px;
-      position: relative;
-    }
-
-    .phone-sub-view.active {
-      display: flex;
-      flex-direction: column;
     }
 
     .favorites-section {
@@ -1254,41 +1240,6 @@
       font-size: 11px;
       color: #34c759;
       margin-top: 2px;
-    }
-
-    /* 전화 앱 하단 iOS 탭바 스타일 */
-    .phone-tabbar {
-      position: absolute;
-      bottom: 0;
-      width: 100%;
-      height: 55px;
-      background: rgba(20, 20, 22, 0.95);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border-top: 0.5px solid rgba(255,255,255,0.1);
-      display: flex;
-      justify-content: space-around;
-      align-items: center;
-      z-index: 100;
-    }
-    .phone-tab-btn {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      color: #8e8e93;
-      font-size: 10px;
-      font-weight: 500;
-      cursor: pointer;
-      gap: 2px;
-      padding: 4px 12px;
-      border-radius: 20px;
-    }
-    .phone-tab-btn.active {
-      color: #0a84ff;
-      background: #2c2c2e;
-    }
-    .phone-tab-icon {
-      font-size: 20px;
     }
 
     /* iMessage Chat Room View */
@@ -1820,344 +1771,80 @@
         </div>
       </div>
 
-      <!-- 📞 PHONE APP VIEW (전화 앱 - 하단 탭 연동형 구조) -->
+      <!-- 2. PHONE APP VIEW (통화 앱) -->
       <div id="phone-view" class="view">
-        <!-- 1) 통화(최근 통화) 탭 화면 -->
-        <div id="phone-sub-recents" class="phone-sub-view active">
-          <div class="app-header">
-            <span class="back-btn" onclick="goHome()">‹ 홈</span>
-            <span class="app-title">통화</span>
-            <span style="color:#0a84ff; font-size:14px;">편집</span>
-          </div>
-          <div class="favorites-section">
-            <div class="fav-card">
-              <div class="fav-avatar">
-                <img src="https://i.postimg.cc/k5CkQqfD/IMG-7307.jpg" alt="지헌이❤️">
-              </div>
-              <span style="font-size:12px; font-weight:600;">지헌이❤️</span>
+        <div class="app-header">
+          <span class="back-btn" onclick="goHome()">‹ 홈</span>
+          <span class="app-title">통화</span>
+          <span style="color:#0a84ff; font-size:14px;">편집</span>
+        </div>
+        <div class="favorites-section">
+          <div class="fav-card">
+            <div class="fav-avatar">
+              <img src="https://i.postimg.cc/k5CkQqfD/IMG-7307.jpg" alt="지헌이❤️">
             </div>
-          </div>
-          <div class="call-list">
-            <div class="call-item">
-              <div class="call-info">
-                <div class="call-avatar">
-                  <img src="https://i.postimg.cc/k5CkQqfD/IMG-7307.jpg" alt="프로필">
-                </div>
-                <div>
-                  <div class="call-name">지헌이❤️</div>
-                  <div class="call-type">↙ 휴대폰</div>
-                </div>
-              </div>
-              <div class="call-meta">
-                <div class="call-date">12:38</div>
-              </div>
-            </div>
-            <div class="call-item">
-              <div class="call-info">
-                <div class="call-avatar">
-                  <img src="https://i.postimg.cc/k5CkQqfD/IMG-7307.jpg" alt="프로필">
-                </div>
-                <div>
-                  <div class="call-name" style="color:#fff;">지헌이❤️</div>
-                  <div class="call-type">↗ 휴대폰</div>
-                </div>
-              </div>
-              <div class="call-meta">
-                <div class="call-date">어제</div>
-                <div class="call-duration">3시간 12분</div>
-              </div>
-            </div>
-            <div class="call-item">
-              <div class="call-info">
-                <div class="call-avatar">
-                  <img src="https://i.postimg.cc/k5CkQqfD/IMG-7307.jpg" alt="프로필">
-                </div>
-                <div>
-                  <div class="call-name" style="color:#fff;">지헌이❤️</div>
-                  <div class="call-type">↙ 카카오톡 영상통화</div>
-                </div>
-              </div>
-              <div class="call-meta">
-                <div class="call-date">토요일</div>
-                <div class="call-duration">1시간 12분</div>
-              </div>
-            </div>
-            <div class="call-item">
-              <div class="call-info">
-                <div class="call-avatar">
-                  <img src="https://i.postimg.cc/k5CkQqfD/IMG-7307.jpg" alt="프로필">
-                </div>
-                <div>
-                  <div class="call-name" style="color:#fff;">지헌이❤️</div>
-                  <div class="call-type">↙ 휴대폰</div>
-                </div>
-              </div>
-              <div class="call-meta">
-                <div class="call-date">목요일</div>
-                <div class="call-duration">5시간 14분</div>
-              </div>
-            </div>
+            <span style="font-size:12px; font-weight:600;">지헌이❤️</span>
           </div>
         </div>
-
-        <!-- 2) 연락처 탭 화면 (자음 및 가나다 순 정렬 + 스크롤 가능) -->
-        <div id="phone-sub-contacts" class="phone-sub-view">
-          <div style="padding: 50px 16px 12px 16px; display: flex; justify-content: space-between; align-items: center; background: rgba(20, 20, 22, 0.95); border-bottom: 0.5px solid rgba(255,255,255,0.1); position: relative;">
-            <span class="back-btn" onclick="switchPhoneTab('recents')">‹ 통화</span>
-            <span style="font-size: 16px; font-weight: 600; position: absolute; left: 50%; transform: translateX(-50%);">연락처</span>
-            <span style="font-size: 20px; color: #0a84ff; cursor: pointer; z-index: 2;">+</span>
-          </div>
-          <div style="flex: 1; overflow-y: auto; padding-bottom: 70px; position: relative;">
-            
-            <!-- 내 카드 (이채영) -->
-            <div style="display: flex; align-items: center; padding: 12px 16px; gap: 12px; border-bottom: 0.5px solid #222;">
-              <div style="width: 44px; height: 44px; border-radius: 50%; overflow: hidden; background: #555;">
-                <img src="https://i.postimg.cc/k5CkQqfD/IMG-7307.jpg" alt="이채영" style="width:100%; height:100%; object-fit:cover;">
+        <div class="call-list">
+          <div class="call-item">
+            <div class="call-info">
+              <div class="call-avatar">
+                <img src="https://i.postimg.cc/k5CkQqfD/IMG-7307.jpg" alt="프로필">
               </div>
               <div>
-                <div style="font-size: 16px; font-weight: 600; color: #fff;">이채영</div>
-                <div style="font-size: 12px; color: #8e8e93; margin-top: 2px;">내 카드</div>
+                <div class="call-name">지헌이❤️</div>
+                <div class="call-type">↙ 휴대폰</div>
               </div>
             </div>
-
-            <!-- ㄱ -->
-            <div style="padding: 6px 16px; font-size: 14px; font-weight: 600; color: #8e8e93; background: #000;">ㄱ</div>
-            <div style="display: flex; align-items: center; justify-content: space-between; padding: 10px 16px; border-bottom: 0.5px solid #1c1c1e;">
-              <div style="display: flex; align-items: center; gap: 12px;">
-                <div style="width: 40px; height: 40px; border-radius: 50%; overflow: hidden; background: #2c2c2e;"><img src="https://i.postimg.cc/k5CkQqfD/IMG-7307.jpg" style="width:100%; height:100%; object-fit:cover;"></div>
-                <span style="font-size: 15px; font-weight: 500; color: #fff;">강민영</span>
-              </div>
+            <div class="call-meta">
+              <div class="call-date">12:38</div>
             </div>
-            <div style="display: flex; align-items: center; justify-content: space-between; padding: 10px 16px; border-bottom: 0.5px solid #1c1c1e;">
-              <div style="display: flex; align-items: center; gap: 12px;">
-                <div style="width: 40px; height: 40px; border-radius: 50%; overflow: hidden; background: #2c2c2e;"><img src="https://i.postimg.cc/k5CkQqfD/IMG-7307.jpg" style="width:100%; height:100%; object-fit:cover;"></div>
-                <span style="font-size: 15px; font-weight: 500; color: #fff;">고다은</span>
-              </div>
-              <span style="color: #ff3b30; font-size: 20px; font-weight: bold;">*</span>
-            </div>
-            <div style="display: flex; align-items: center; justify-content: space-between; padding: 10px 16px; border-bottom: 0.5px solid #1c1c1e;">
-              <div style="display: flex; align-items: center; gap: 12px;">
-                <div style="width: 40px; height: 40px; border-radius: 50%; overflow: hidden; background: #2c2c2e;"><img src="https://i.postimg.cc/k5CkQqfD/IMG-7307.jpg" style="width:100%; height:100%; object-fit:cover;"></div>
-                <span style="font-size: 15px; font-weight: 500; color: #fff;">고모</span>
-              </div>
-            </div>
-            <div style="display: flex; align-items: center; justify-content: space-between; padding: 10px 16px; border-bottom: 0.5px solid #1c1c1e;">
-              <div style="display: flex; align-items: center; gap: 12px;">
-                <div style="width: 40px; height: 40px; border-radius: 50%; overflow: hidden; background: #2c2c2e;"><img src="https://i.postimg.cc/k5CkQqfD/IMG-7307.jpg" style="width:100%; height:100%; object-fit:cover;"></div>
-                <span style="font-size: 15px; font-weight: 500; color: #fff;">고모부</span>
-              </div>
-            </div>
-            <div style="display: flex; align-items: center; justify-content: space-between; padding: 10px 16px; border-bottom: 0.5px solid #1c1c1e;">
-              <div style="display: flex; align-items: center; gap: 12px;">
-                <div style="width: 40px; height: 40px; border-radius: 50%; overflow: hidden; background: #2c2c2e;"><img src="https://i.postimg.cc/k5CkQqfD/IMG-7307.jpg" style="width:100%; height:100%; object-fit:cover;"></div>
-                <span style="font-size: 15px; font-weight: 500; color: #fff;">그녀의 여식1(언니1)</span>
-              </div>
-            </div>
-            <div style="display: flex; align-items: center; justify-content: space-between; padding: 10px 16px; border-bottom: 0.5px solid #1c1c1e;">
-              <div style="display: flex; align-items: center; gap: 12px;">
-                <div style="width: 40px; height: 40px; border-radius: 50%; overflow: hidden; background: #2c2c2e;"><img src="https://i.postimg.cc/k5CkQqfD/IMG-7307.jpg" style="width:100%; height:100%; object-fit:cover;"></div>
-                <span style="font-size: 15px; font-weight: 500; color: #fff;">그녀의 여식2(언니2)</span>
-              </div>
-            </div>
-            <div style="display: flex; align-items: center; justify-content: space-between; padding: 10px 16px; border-bottom: 0.5px solid #1c1c1e;">
-              <div style="display: flex; align-items: center; gap: 12px;">
-                <div style="width: 40px; height: 40px; border-radius: 50%; overflow: hidden; background: #2c2c2e;"><img src="https://i.postimg.cc/k5CkQqfD/IMG-7307.jpg" style="width:100%; height:100%; object-fit:cover;"></div>
-                <span style="font-size: 15px; font-weight: 500; color: #fff;">김현석 파트장님</span>
-              </div>
-            </div>
-
-            <!-- ㄴ -->
-            <div style="padding: 6px 16px; font-size: 14px; font-weight: 600; color: #8e8e93; background: #000;">ㄴ</div>
-            <div style="display: flex; align-items: center; justify-content: space-between; padding: 10px 16px; border-bottom: 0.5px solid #1c1c1e;">
-              <div style="display: flex; align-items: center; gap: 12px;">
-                <div style="width: 40px; height: 40px; border-radius: 50%; overflow: hidden; background: #2c2c2e;"><img src="https://i.postimg.cc/k5CkQqfD/IMG-7307.jpg" style="width:100%; height:100%; object-fit:cover;"></div>
-                <span style="font-size: 15px; font-weight: 500; color: #fff;">나연정</span>
-              </div>
-            </div>
-            <div style="display: flex; align-items: center; justify-content: space-between; padding: 10px 16px; border-bottom: 0.5px solid #1c1c1e;">
-              <div style="display: flex; align-items: center; gap: 12px;">
-                <div style="width: 40px; height: 40px; border-radius: 50%; overflow: hidden; background: #2c2c2e;"><img src="https://i.postimg.cc/k5CkQqfD/IMG-7307.jpg" style="width:100%; height:100%; object-fit:cover;"></div>
-                <span style="font-size: 15px; font-weight: 500; color: #fff;">노윤경</span>
-              </div>
-            </div>
-
-            <!-- ㄷ -->
-            <div style="padding: 6px 16px; font-size: 14px; font-weight: 600; color: #8e8e93; background: #000;">ㄷ</div>
-            <div style="display: flex; align-items: center; justify-content: space-between; padding: 10px 16px; border-bottom: 0.5px solid #1c1c1e;">
-              <div style="display: flex; align-items: center; gap: 12px;">
-                <div style="width: 40px; height: 40px; border-radius: 50%; overflow: hidden; background: #2c2c2e;"><img src="https://i.postimg.cc/k5CkQqfD/IMG-7307.jpg" style="width:100%; height:100%; object-fit:cover;"></div>
-                <span style="font-size: 15px; font-weight: 500; color: #fff;">도강민</span>
-              </div>
-            </div>
-
-            <!-- ㄹ -->
-            <div style="padding: 6px 16px; font-size: 14px; font-weight: 600; color: #8e8e93; background: #000;">ㄹ</div>
-            <div style="display: flex; align-items: center; justify-content: space-between; padding: 10px 16px; border-bottom: 0.5px solid #1c1c1e;">
-              <div style="display: flex; align-items: center; gap: 12px;">
-                <div style="width: 40px; height: 40px; border-radius: 50%; overflow: hidden; background: #2c2c2e;"><img src="https://i.postimg.cc/k5CkQqfD/IMG-7307.jpg" style="width:100%; height:100%; object-fit:cover;"></div>
-                <span style="font-size: 15px; font-weight: 500; color: #fff;">류영빈</span>
-              </div>
-            </div>
-
-            <!-- ㅁ -->
-            <div style="padding: 6px 16px; font-size: 14px; font-weight: 600; color: #8e8e93; background: #000;">ㅁ</div>
-            <div style="display: flex; align-items: center; justify-content: space-between; padding: 10px 16px; border-bottom: 0.5px solid #1c1c1e;">
-              <div style="display: flex; align-items: center; gap: 12px;">
-                <div style="width: 40px; height: 40px; border-radius: 50%; overflow: hidden; background: #2c2c2e;"><img src="https://i.postimg.cc/k5CkQqfD/IMG-7307.jpg" style="width:100%; height:100%; object-fit:cover;"></div>
-                <span style="font-size: 15px; font-weight: 500; color: #fff;">마더</span>
-              </div>
-            </div>
-            <div style="display: flex; align-items: center; justify-content: space-between; padding: 10px 16px; border-bottom: 0.5px solid #1c1c1e;">
-              <div style="display: flex; align-items: center; gap: 12px;">
-                <div style="width: 40px; height: 40px; border-radius: 50%; overflow: hidden; background: #2c2c2e;"><img src="https://i.postimg.cc/k5CkQqfD/IMG-7307.jpg" style="width:100%; height:100%; object-fit:cover;"></div>
-                <span style="font-size: 15px; font-weight: 500; color: #fff;">문태빈</span>
-              </div>
-            </div>
-
-            <!-- ㅂ -->
-            <div style="padding: 6px 16px; font-size: 14px; font-weight: 600; color: #8e8e93; background: #000;">ㅂ</div>
-            <div style="display: flex; align-items: center; justify-content: space-between; padding: 10px 16px; border-bottom: 0.5px solid #1c1c1e;">
-              <div style="display: flex; align-items: center; gap: 12px;">
-                <div style="width: 40px; height: 40px; border-radius: 50%; overflow: hidden; background: #2c2c2e;"><img src="https://i.postimg.cc/k5CkQqfD/IMG-7307.jpg" style="width:100%; height:100%; object-fit:cover;"></div>
-                <span style="font-size: 15px; font-weight: 500; color: #fff;">박수아</span>
-              </div>
-            </div>
-
-            <!-- ㅅ -->
-            <div style="padding: 6px 16px; font-size: 14px; font-weight: 600; color: #8e8e93; background: #000;">ㅅ</div>
-            <div style="display: flex; align-items: center; justify-content: space-between; padding: 10px 16px; border-bottom: 0.5px solid #1c1c1e;">
-              <div style="display: flex; align-items: center; gap: 12px;">
-                <div style="width: 40px; height: 40px; border-radius: 50%; overflow: hidden; background: #2c2c2e;"><img src="https://i.postimg.cc/k5CkQqfD/IMG-7307.jpg" style="width:100%; height:100%; object-fit:cover;"></div>
-                <span style="font-size: 15px; font-weight: 500; color: #fff;">손은지</span>
-              </div>
-            </div>
-            <div style="display: flex; align-items: center; justify-content: space-between; padding: 10px 16px; border-bottom: 0.5px solid #1c1c1e;">
-              <div style="display: flex; align-items: center; gap: 12px;">
-                <div style="width: 40px; height: 40px; border-radius: 50%; overflow: hidden; background: #2c2c2e;"><img src="https://i.postimg.cc/k5CkQqfD/IMG-7307.jpg" style="width:100%; height:100%; object-fit:cover;"></div>
-                <span style="font-size: 15px; font-weight: 500; color: #fff;">신현아</span>
-              </div>
-            </div>
-
-            <!-- ㅇ -->
-            <div style="padding: 6px 16px; font-size: 14px; font-weight: 600; color: #8e8e93; background: #000;">ㅇ</div>
-            <div style="display: flex; align-items: center; justify-content: space-between; padding: 10px 16px; border-bottom: 0.5px solid #1c1c1e;">
-              <div style="display: flex; align-items: center; gap: 12px;">
-                <div style="width: 40px; height: 40px; border-radius: 50%; overflow: hidden; background: #2c2c2e;"><img src="https://i.postimg.cc/k5CkQqfD/IMG-7307.jpg" style="width:100%; height:100%; object-fit:cover;"></div>
-                <span style="font-size: 15px; font-weight: 500; color: #fff;">유세빈</span>
-              </div>
-            </div>
-            <div style="display: flex; align-items: center; justify-content: space-between; padding: 10px 16px; border-bottom: 0.5px solid #1c1c1e;">
-              <div style="display: flex; align-items: center; gap: 12px;">
-                <div style="width: 40px; height: 40px; border-radius: 50%; overflow: hidden; background: #2c2c2e;"><img src="https://i.postimg.cc/k5CkQqfD/IMG-7307.jpg" style="width:100%; height:100%; object-fit:cover;"></div>
-                <span style="font-size: 15px; font-weight: 500; color: #fff;">유지애 위원님</span>
-              </div>
-            </div>
-
-            <!-- ㅈ (지헌이❤️ 포함) -->
-            <div style="padding: 6px 16px; font-size: 14px; font-weight: 600; color: #8e8e93; background: #000;">ㅈ</div>
-            <div style="display: flex; align-items: center; justify-content: space-between; padding: 10px 16px; border-bottom: 0.5px solid #1c1c1e;">
-              <div style="display: flex; align-items: center; gap: 12px;">
-                <div style="width: 40px; height: 40px; border-radius: 50%; overflow: hidden; background: #2c2c2e;"><img src="https://i.postimg.cc/k5CkQqfD/IMG-7307.jpg" style="width:100%; height:100%; object-fit:cover;"></div>
-                <span style="font-size: 15px; font-weight: 500; color: #fff;">장진영</span>
-              </div>
-            </div>
-            <div style="display: flex; align-items: center; justify-content: space-between; padding: 10px 16px; border-bottom: 0.5px solid #1c1c1e;">
-              <div style="display: flex; align-items: center; gap: 12px;">
-                <div style="width: 40px; height: 40px; border-radius: 50%; overflow: hidden; background: #2c2c2e;"><img src="https://i.postimg.cc/k5CkQqfD/IMG-7307.jpg" style="width:100%; height:100%; object-fit:cover;"></div>
-                <span style="font-size: 15px; font-weight: 500; color: #fff;">지헌이❤️</span>
-              </div>
-            </div>
-
-            <!-- ㅊ -->
-            <div style="padding: 6px 16px; font-size: 14px; font-weight: 600; color: #8e8e93; background: #000;">ㅊ</div>
-            <div style="display: flex; align-items: center; justify-content: space-between; padding: 10px 16px; border-bottom: 0.5px solid #1c1c1e;">
-              <div style="display: flex; align-items: center; gap: 12px;">
-                <div style="width: 40px; height: 40px; border-radius: 50%; overflow: hidden; background: #2c2c2e;"><img src="https://i.postimg.cc/k5CkQqfD/IMG-7307.jpg" style="width:100%; height:100%; object-fit:cover;"></div>
-                <span style="font-size: 15px; font-weight: 500; color: #fff;">채원진</span>
-              </div>
-            </div>
-
-            <!-- ㅋ -->
-            <div style="padding: 6px 16px; font-size: 14px; font-weight: 600; color: #8e8e93; background: #000;">ㅋ</div>
-            <div style="display: flex; align-items: center; justify-content: space-between; padding: 10px 16px; border-bottom: 0.5px solid #1c1c1e;">
-              <div style="display: flex; align-items: center; gap: 12px;">
-                <div style="width: 40px; height: 40px; border-radius: 50%; overflow: hidden; background: #2c2c2e;"><img src="https://i.postimg.cc/k5CkQqfD/IMG-7307.jpg" style="width:100%; height:100%; object-fit:cover;"></div>
-                <span style="font-size: 15px; font-weight: 500; color: #fff;">카스테라 가게</span>
-              </div>
-            </div>
-
-            <!-- ㅌ -->
-            <div style="padding: 6px 16px; font-size: 14px; font-weight: 600; color: #8e8e93; background: #000;">ㅌ</div>
-            <div style="display: flex; align-items: center; justify-content: space-between; padding: 10px 16px; border-bottom: 0.5px solid #1c1c1e;">
-              <div style="display: flex; align-items: center; gap: 12px;">
-                <div style="width: 40px; height: 40px; border-radius: 50%; overflow: hidden; background: #2c2c2e;"><img src="https://i.postimg.cc/k5CkQqfD/IMG-7307.jpg" style="width:100%; height:100%; object-fit:cover;"></div>
-                <span style="font-size: 15px; font-weight: 500; color: #fff;">태은석</span>
-              </div>
-            </div>
-
-            <!-- ㅍ -->
-            <div style="padding: 6px 16px; font-size: 14px; font-weight: 600; color: #8e8e93; background: #000;">ㅍ</div>
-            <div style="display: flex; align-items: center; justify-content: space-between; padding: 10px 16px; border-bottom: 0.5px solid #1c1c1e;">
-              <div style="display: flex; align-items: center; gap: 12px;">
-                <div style="width: 40px; height: 40px; border-radius: 50%; overflow: hidden; background: #2c2c2e;"><img src="https://i.postimg.cc/k5CkQqfD/IMG-7307.jpg" style="width:100%; height:100%; object-fit:cover;"></div>
-                <span style="font-size: 15px; font-weight: 500; color: #fff;">파더</span>
-              </div>
-            </div>
-
-            <!-- ㅎ -->
-            <div style="padding: 6px 16px; font-size: 14px; font-weight: 600; color: #8e8e93; background: #000;">ㅎ</div>
-            <div style="display: flex; align-items: center; justify-content: space-between; padding: 10px 16px; border-bottom: 0.5px solid #1c1c1e;">
-              <div style="display: flex; align-items: center; gap: 12px;">
-                <div style="width: 40px; height: 40px; border-radius: 50%; overflow: hidden; background: #2c2c2e;"><img src="https://i.postimg.cc/k5CkQqfD/IMG-7307.jpg" style="width:100%; height:100%; object-fit:cover;"></div>
-                <span style="font-size: 15px; font-weight: 500; color: #fff;">한현영</span>
-              </div>
-            </div>
-
           </div>
-          <!-- 우측 자음/알파벳 인덱스 바 -->
-          <div style="position: absolute; right: 4px; top: 80px; bottom: 70px; display: flex; flex-direction: column; align-items: center; justify-content: space-between; font-size: 9px; color: #0a84ff; padding: 4px 0; z-index: 10; pointer-events: none;">
-            <span>ㄱ</span><span>ㄴ</span><span>ㄷ</span><span>ㄹ</span><span>ㅁ</span><span>ㅂ</span><span>ㅅ</span><span>ㅇ</span><span>ㅈ</span><span>ㅊ</span><span>ㅋ</span><span>ㅌ</span><span>ㅍ</span><span>ㅎ</span><span>A</span><span>B</span><span>C</span><span>D</span><span>E</span><span>F</span><span>G</span><span>H</span><span>I</span><span>J</span><span>K</span><span>L</span><span>M</span><span>N</span><span>O</span><span>P</span><span>Q</span><span>R</span><span>S</span><span>T</span><span>U</span><span>V</span><span>W</span><span>X</span><span>Y</span><span>Z</span><span>#</span>
+          <div class="call-item">
+            <div class="call-info">
+              <div class="call-avatar">
+                <img src="https://i.postimg.cc/k5CkQqfD/IMG-7307.jpg" alt="프로필">
+              </div>
+              <div>
+                <div class="call-name" style="color:#fff;">지헌이❤️</div>
+                <div class="call-type">↗ 휴대폰</div>
+              </div>
+            </div>
+            <div class="call-meta">
+              <div class="call-date">어제</div>
+              <div class="call-duration">3시간 12분</div>
+            </div>
           </div>
-        </div>
-
-        <!-- 3) 키패드 탭 화면 (위치 조정 적용) -->
-        <div id="phone-sub-keypad" class="phone-sub-view" style="justify-content: center; align-items: center; padding-bottom: 50px;">
-          <div class="keypad" style="padding-bottom: 20px;">
-            <div class="key" style="background:#1c1c1e; color:#fff;">1<span class="sub">&nbsp;</span></div>
-            <div class="key" style="background:#1c1c1e; color:#fff;">2<span class="sub" style="color:#8e8e93;">ABC</span></div>
-            <div class="key" style="background:#1c1c1e; color:#fff;">3<span class="sub" style="color:#8e8e93;">DEF</span></div>
-            <div class="key" style="background:#1c1c1e; color:#fff;">4<span class="sub" style="color:#8e8e93;">GHI</span></div>
-            <div class="key" style="background:#1c1c1e; color:#fff;">5<span class="sub" style="color:#8e8e93;">JKL</span></div>
-            <div class="key" style="background:#1c1c1e; color:#fff;">6<span class="sub" style="color:#8e8e93;">MNO</span></div>
-            <div class="key" style="background:#1c1c1e; color:#fff;">7<span class="sub" style="color:#8e8e93;">PQRS</span></div>
-            <div class="key" style="background:#1c1c1e; color:#fff;">8<span class="sub" style="color:#8e8e93;">TUV</span></div>
-            <div class="key" style="background:#1c1c1e; color:#fff;">9<span class="sub" style="color:#8e8e93;">WXYZ</span></div>
-            <div class="key empty"></div>
-            <div class="key" style="background:#1c1c1e; color:#fff;">0<span class="sub" style="color:#8e8e93;">+</span></div>
-            <div class="key empty" style="font-size:22px; display:flex; justify-content:center; align-items:center; color:#fff;">⌫</div>
+          <div class="call-item">
+            <div class="call-info">
+              <div class="call-avatar">
+                <img src="https://i.postimg.cc/k5CkQqfD/IMG-7307.jpg" alt="프로필">
+              </div>
+              <div>
+                <div class="call-name" style="color:#fff;">지헌이❤️</div>
+                <div class="call-type">↙ 카카오톡 영상통화</div>
+              </div>
+            </div>
+            <div class="call-meta">
+              <div class="call-date">토요일</div>
+              <div class="call-duration">1시간 12분</div>
+            </div>
           </div>
-          <div style="width: 68px; height: 68px; background: #34c759; border-radius: 50%; display: flex; justify-content: center; align-items: center; margin-top: 10px; cursor: pointer;">
-            <svg viewBox="0 0 24 24" style="width: 28px; height: 28px; fill: #fff;"><path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56a.977.977 0 0 0-1.01.24l-2.2 2.2c-2.83-1.44-5.15-3.75-6.59-6.59l2.2-2.21c.28-.26.36-.65.25-1.01A11.36 11.36 0 0 1 8.57 3.9c.11-.52-.3-.99-.83-.99H4.11c-.56 0-1.03.43-1.09.99-.54 5.3 1.25 10.58 4.96 14.29 3.7 3.7 8.98 5.5 14.28 4.96.56-.06 1-.53 1-1.09v-3.57c0-.53-.47-.94-1-.83z"/></svg>
-          </div>
-        </div>
-
-        <!-- 전화 앱 하단 iOS 탭바 -->
-        <div class="phone-tabbar">
-          <div class="phone-tab-btn active" id="tab-btn-recents" onclick="switchPhoneTab('recents')">
-            <span class="phone-tab-icon"></span>
-            <span>통화</span>
-          </div>
-          <div class="phone-tab-btn" id="tab-btn-contacts" onclick="switchPhoneTab('contacts')">
-            <span class="phone-tab-icon"></span>
-            <span>연락처</span>
-          </div>
-          <div class="phone-tab-btn" id="tab-btn-keypad" onclick="switchPhoneTab('keypad')">
-            <span class="phone-tab-icon"></span>
-            <span>키패드</span>
-          </div>
-          <div class="phone-tab-btn">
-            <span class="phone-tab-icon"></span>
-            <span>검색</span>
+          <div class="call-item">
+            <div class="call-info">
+              <div class="call-avatar">
+                <img src="https://i.postimg.cc/k5CkQqfD/IMG-7307.jpg" alt="프로필">
+              </div>
+              <div>
+                <div class="call-name" style="color:#fff;">지헌이❤️</div>
+                <div class="call-type">↙ 휴대폰</div>
+              </div>
+            </div>
+            <div class="call-meta">
+              <div class="call-date">목요일</div>
+              <div class="call-duration">5시간 14분</div>
+            </div>
           </div>
         </div>
       </div>
@@ -2526,30 +2213,9 @@
         statusBarTime.style.visibility = 'visible';
       }
 
-      if (viewId === 'phone-view') {
-        switchPhoneTab('recents');
-      }
-
       if (viewId !== 'facetalk-view') {
         const videoPlayer = document.getElementById('facetalkVideoPlayer');
         if (videoPlayer) videoPlayer.pause();
-      }
-    }
-
-    /* 📞 전화 앱 내부 하단 탭바 전환 함수 */
-    function switchPhoneTab(tabName) {
-      document.querySelectorAll('.phone-sub-view').forEach(v => v.classList.remove('active'));
-      document.querySelectorAll('.phone-tab-btn').forEach(b => b.classList.remove('active'));
-
-      if (tabName === 'recents') {
-        document.getElementById('phone-sub-recents').classList.add('active');
-        document.getElementById('tab-btn-recents').classList.add('active');
-      } else if (tabName === 'contacts') {
-        document.getElementById('phone-sub-contacts').classList.add('active');
-        document.getElementById('tab-btn-contacts').classList.add('active');
-      } else if (tabName === 'keypad') {
-        document.getElementById('phone-sub-keypad').classList.add('active');
-        document.getElementById('tab-btn-keypad').classList.add('active');
       }
     }
 
@@ -2612,7 +2278,7 @@
     }
 
     function openKakaoChatRoom() {
-      openApp('kakao-talk-view');
+      openApp('kakao-chat-room');
     }
 
     function returnToKakaoList() {
@@ -2765,4 +2431,3 @@
   </script>
 </body>
 </html>
-
