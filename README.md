@@ -2389,10 +2389,10 @@
           replyText = "나두 💗💗💗 히히";
         } 
         else if (text.includes('보고싶') || text.includes('보구싶') || text.includes('보고시퍼')) {
-          replyText = "맨날 데이트 하고싶어ㅓ....";
+          replyText = "나도...";
         } 
         else if (text.includes('뭐해') || text.includes('모해') || text.includes('머해')) {
-          replyText = "맞혀바라~~";
+          replyText = "언니 생각하지요오 ㅎㅎ";
         } 
         else if (text.includes('들어갔') || text.includes('조심') || text.includes('들어갓')) {
           replyText = "언니랑 더 있고 싶었는데..";
@@ -2431,4 +2431,3 @@
   </script>
 </body>
 </html>
-
