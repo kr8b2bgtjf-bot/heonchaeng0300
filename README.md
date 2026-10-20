@@ -2028,7 +2028,7 @@
           <div class="msg-date-divider">10월 19일 월요일</div>
 
           <div class="msg-wrapper msg-them">
-            <div class="message-bubble">오늘 몇 시에 만나?</div>
+            <div class="message-bubble">톡에 보내놓은 카페에서 기다리께용💗</div>
             <div class="msg-time">12:43</div>
           </div>
 
