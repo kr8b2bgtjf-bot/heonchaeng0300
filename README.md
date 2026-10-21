@@ -3147,7 +3147,7 @@
       <div id="insta-my-profile-view" class="view">
         <div class="insta-profile-header">
           <span class="back-btn" onclick="openInstaFeed()" style="font-size:22px; color:#fff; z-index:2;">‹</span>
-          <span style="font-size:15px; font-weight:700; color:#ffffff; position:absolute; left:50%; transform:translateX(-50%);">l2eechang_0</span>
+          <span style="font-size:15px; font-weight:700; color:#ffffff; position:absolute; left:50%; transform:translateX(-50%);">l2eechaeng_0</span>
           <div style="display:flex; gap:16px; font-size:18px; z-index:2;">
             <span>+</span>
             <span>≡</span>
