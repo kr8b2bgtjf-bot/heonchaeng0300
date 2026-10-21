@@ -2821,7 +2821,7 @@
       <div class="di-facetime-content">
         <div class="di-ft-left">
           <div class="di-ft-avatar">
-            <img src="https://i.postimg.cc/nzGhJnhQ/IMG-1498.jpg" alt="지헌이">
+            <img src="https://i.postimg.cc/k5CkQqfD/IMG-7307.jpg" alt="지헌이">
           </div>
           <div class="di-ft-text">
             <span class="di-ft-sub">FaceTime 영상 통화</span>
