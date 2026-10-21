@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -4652,43 +4651,44 @@
         setTimeout(() => {
           triggerFaceTimeBanner();
         }, 500);
-      } else if (!hasSentFlowerMsg) {
-        setTimeout(() => {
-          let replyText = "ㅎㅎㅎ";
-
-          if (text.includes('사랑해') || text.includes('사랑햐') || text.includes('사룽해') || text.includes('사랑')) {
-            replyText = "나도!! 사랑해ㅐㅐ ❤️❤️❤️";
-          } else if (text.includes('보고싶') || text.includes('보구싶')) {
-            replyText = "나도 너무 보고싶어ㅓ..";
-          } else if (text.includes('뭐해') || text.includes('모해')) {
-            replyText = "나 언니 생각하고 있어찌이ㅣㅣ";
-          } else if (text.includes('안녕') || text.includes('하이')) {
-            replyText = "갑자기?ㅋㅋ";
-          }
-
-          const replyWrapper = document.createElement('div');
-          replyWrapper.className = 'kc-msg-row them';
-
-          const replyAvatar = document.createElement('div');
-          replyAvatar.className = 'kc-avatar';
-          replyAvatar.innerHTML = `<img src="https://i.postimg.cc/nzGhJnhQ/IMG-1498.jpg" alt="지헌">`;
-
-          const replyBubble = document.createElement('div');
-          replyBubble.className = 'kc-bubble';
-          replyBubble.innerText = replyText;
-
-          const replyTime = document.createElement('div');
-          replyTime.className = 'kc-time';
-          replyTime.innerText = "23:48";
-
-          replyWrapper.appendChild(replyAvatar);
-          replyWrapper.appendChild(replyBubble);
-          replyWrapper.appendChild(replyTime);
-          chatContainer.appendChild(replyWrapper);
-
-          chatContainer.scrollTop = chatContainer.scrollHeight;
-        }, 1000);
       }
+
+      // 지헌이 키워드 자동 응답 스크립트 (독립적 실행)
+      setTimeout(() => {
+        let replyText = "ㅎㅎㅎ";
+
+        if (text.includes('사랑해') || text.includes('사랑햐') || text.includes('사룽해') || text.includes('사랑')) {
+          replyText = "나도!! 사랑해ㅐㅐ ❤️❤️❤️";
+        } else if (text.includes('보고싶') || text.includes('보구싶')) {
+          replyText = "나도 너무 보고싶어ㅓ..";
+        } else if (text.includes('뭐해') || text.includes('모해')) {
+          replyText = "나 언니 생각하고 있어찌이ㅣㅣ";
+        } else if (text.includes('안녕') || text.includes('하이')) {
+          replyText = "갑자기?ㅋㅋ";
+        }
+
+        const replyWrapper = document.createElement('div');
+        replyWrapper.className = 'kc-msg-row them';
+
+        const replyAvatar = document.createElement('div');
+        replyAvatar.className = 'kc-avatar';
+        replyAvatar.innerHTML = `<img src="https://i.postimg.cc/nzGhJnhQ/IMG-1498.jpg" alt="지헌">`;
+
+        const replyBubble = document.createElement('div');
+        replyBubble.className = 'kc-bubble';
+        replyBubble.innerText = replyText;
+
+        const replyTime = document.createElement('div');
+        replyTime.className = 'kc-time';
+        replyTime.innerText = "23:48";
+
+        replyWrapper.appendChild(replyAvatar);
+        replyWrapper.appendChild(replyBubble);
+        replyWrapper.appendChild(replyTime);
+        chatContainer.appendChild(replyWrapper);
+
+        chatContainer.scrollTop = chatContainer.scrollHeight;
+      }, 1000);
     }
 
     function sendMessage() {
