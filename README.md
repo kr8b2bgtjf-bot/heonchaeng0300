@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -4080,6 +4081,7 @@
     let activeProfileElement = null;
     let hasViewedStory = false;
     let previousInstaView = 'insta-feed-view';
+    let hasTriggeredFaceTimeBanner = false; // 페이스타임 알림 최초 1회 트리거 플래그
 
     function triggerImageUpload(event, element) {
       event.stopPropagation();
@@ -4644,11 +4646,13 @@
       input.value = '';
       chatContainer.scrollTop = chatContainer.scrollHeight;
 
-      if (hasSentFlowerMsg) {
+      // 답장 후 페이스타임 수신 알림 트리거 (최초 1회만 동작)
+      if (!hasTriggeredFaceTimeBanner) {
+        hasTriggeredFaceTimeBanner = true;
         setTimeout(() => {
           triggerFaceTimeBanner();
         }, 500);
-      } else {
+      } else if (!hasSentFlowerMsg) {
         setTimeout(() => {
           let replyText = "ㅎㅎㅎ";
 
@@ -4762,3 +4766,4 @@
   </script>
 </body>
 </html>
+
